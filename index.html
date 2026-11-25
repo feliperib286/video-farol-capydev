@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farol.IA — Demonstração do Projeto</title>
+  <style>
+    :root {
+      --navy: #12324a;
+      --navy-dark: #0b2133;
+      --teal: #0d7c78;
+      --teal-hover: #0a6360;
+      --amber: #e29d27;
+      --bg: #f6f9fa;
+      --card: #ffffff;
+      --text: #1c2c38;
+      --muted: #5a6d7c;
+      --border: #dce6ec;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+      color: #ffffff;
+      padding: 28px 20px 32px;
+      text-align: center;
+      border-bottom: 4px solid var(--teal);
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: rgba(13, 124, 120, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #d8f5f3;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    header h1 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    header h1 span {
+      color: var(--amber);
+    }
+
+    header p {
+      max-width: 640px;
+      margin: 8px auto 0;
+      color: #cbd9e4;
+      font-size: 1rem;
+    }
+
+    main {
+      width: 100%;
+      max-width: 900px;
+      margin: -18px auto 40px;
+      padding: 0 16px;
+      flex: 1;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 10px 28px rgba(18, 50, 74, 0.08);
+      padding: 22px;
+    }
+
+    .video-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .video-header h2 {
+      font-size: 1.15rem;
+      color: var(--navy);
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--teal);
+      background-color: #e6f5f4;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--teal);
+      border-radius: 50%;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      background-color: #0b1620;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      max-height: 70vh;
+      outline: none;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      flex: 1 1 220px;
+    }
+
+    .btn:active {
+      transform: scale(0.99);
+    }
+
+    .btn-primary {
+      background-color: var(--teal);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--teal-hover);
+    }
+
+    .btn-secondary {
+      background-color: var(--navy);
+      color: #ffffff;
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--navy-dark);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .info-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .info-box h3 {
+      font-size: 0.92rem;
+      color: var(--teal);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .info-box p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 16px 28px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      background-color: #ffffff;
+    }
+
+    footer strong {
+      color: var(--navy);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge">Feira de Projetos de DSM • Fatec Jacareí</div>
+    <h1>Farol<span>.IA</span></h1>
+    <p>Enxergar cedo. Apoiar melhor. — Inteligência Educacional para Acompanhamento e Permanência Estudantil.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="video-header">
+        <h2>Demonstração da Plataforma</h2>
+        <span class="status-pill">
+          <span class="status-dot"></span>
+          Vídeo de Apresentação
+        </span>
+      </div>
+
+      <div class="video-wrapper">
+        <video controls playsinline preload="metadata">
+          <source src="demo.mp4" type="video/mp4" />
+          Seu navegador não suporta a reprodução de vídeo HTML5.
+        </video>
+      </div>
+
+      <div class="actions">
+        <a
+          class="btn btn-primary"
+          href="https://skyline-screen-pursuit.ngrok-free.dev"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Acessar Ambiente de Teste
+        </a>
+        <a
+          class="btn btn-secondary"
+          href="https://github.com/Capydev-jac/Projeto-Farol.IA"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Ver Repositório no GitHub
+        </a>
+      </div>
+    </section>
+
+    <section class="info-grid">
+      <div class="info-box">
+        <h3>Predição com IA</h3>
+        <p>Modelos Random Forest e LightGBM treinados com microdados do ENEM identificam riscos de defasagem.</p>
+      </div>
+      <div class="info-box">
+        <h3>Gestão por Turma</h3>
+        <p>Acompanhamento de indicadores por sala e classificação nas faixas Regular, Atenção e Crítico.</p>
+      </div>
+      <div class="info-box">
+        <h3>Planos de Apoio</h3>
+        <p>Registro estruturado de intervenções pedagógicas para apoiar gestores e professores.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>Equipe Capydev</strong> • 5º Semestre de DSM — Fatec Jacareí | Centro Paula Souza</p>
+    <p style="margin-top: 4px;">Breno de Luca - Felipe Ribeiro - Gabriel Camargo - Gabriel Frois - João Victor - Pedro Henrique</p>
+  </footer>
+
+</body>
+</html>
